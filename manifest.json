@@ -1,0 +1,43 @@
+{
+    "manifest_version": 3,
+    "name": "Zendesk Call Alerts",
+    "version": "1.0",
+    "description": "Receive audio alerts from incoming Zendesk calls to any audio output",
+    "permissions": [
+        "tabs",
+        "scripting",
+        "activeTab",
+        "offscreen"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "host_permissions": [
+        "https://*.zendesk.com/"
+    ],
+    "background": {
+        "service_worker": "offscreen.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.zendesk.com/*"
+            ],
+            "js": [
+                "background.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "ring.mp3"
+            ],
+            "matches": [
+                "https://*/*"
+            ]
+        }
+    ]
+}

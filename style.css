@@ -1,0 +1,11 @@
+body {
+    width: 300px;
+    padding: 10px;
+}
+h2 {
+    margin: 0;
+}
+
+select {
+    max-width: 100%;
+}
